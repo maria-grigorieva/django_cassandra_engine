@@ -47,7 +47,7 @@ class Command(NoArgsCommand):
         engine = get_engine_from_db_alias(alias)
 
         if engine != 'django_cassandra_engine':
-            raise CommandError('Database {} is not cassandra!'.format(alias))
+            raise CommandError('Database {0} is not cassandra!'.format(alias))
 
         connection = connections[alias]
         connection.connect()
@@ -58,7 +58,7 @@ class Command(NoArgsCommand):
                                               'SimpleStrategy')
         replication_factor = replication_opts.pop('replication_factor', 1)
 
-        self.stdout.write('Creating keyspace {}..'.format(keyspace))
+        self.stdout.write('Creating keyspace {0}..'.format(keyspace))
 
         create_keyspace(keyspace, strategy_class, replication_factor,
                         **replication_opts)

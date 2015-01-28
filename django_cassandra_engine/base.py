@@ -45,7 +45,7 @@ class DatabaseOperations(NonrelDatabaseOperations):
         """
 
         for table in tables:
-            qs = "TRUNCATE {}".format(table)
+            qs = "TRUNCATE {0}".format(table)
             self.connection.connection.execute(qs)
 
         return []
